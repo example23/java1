@@ -7,6 +7,9 @@ import static org.testng.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+import java.util.concurrent.TimeUnit;
+import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.fail;
 
 public class GroupCreationsTests2 {
   private WebDriver driver;
@@ -21,14 +24,13 @@ public class GroupCreationsTests2 {
     baseUrl = "https://www.katalon.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
-  }
+
 
   @Test
   public void GroupCreationsTests2() throws Exception {
     driver.get("http://localhost/addressbook/addressbook/");
     driver.findElement(By.name("user")).click();
     driver.findElement(By.name("user")).click();
-    // ERROR: Caught exception [ERROR: Unsupported command [doubleClick | name=user | ]]
     driver.findElement(By.name("user")).click();
     driver.findElement(By.name("user")).clear();
     driver.findElement(By.name("user")).sendKeys("admin");
@@ -51,7 +53,6 @@ public class GroupCreationsTests2 {
     driver.findElement(By.name("nickname")).clear();
     driver.findElement(By.name("nickname")).sendKeys("4");
     driver.findElement(By.name("submit")).click();
-    driver.findElement(By.id("1")).click();
     acceptNextAlert = true;
     driver.findElement(By.xpath("//input[@value='Delete']")).click();
     assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));

@@ -20,10 +20,6 @@ public class GroupCreationsTests {
     driver =new FirefoxDriver();
     baseUrl = "https://www.katalon.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-  }
-
-  @Test
-  public void testUntitledTestCase() throws Exception {
     driver.get("http://localhost/addressbook/addressbook/");
     driver.findElement(By.name("user")).click();
     driver.findElement(By.name("user")).click();
@@ -33,6 +29,10 @@ public class GroupCreationsTests {
     driver.findElement(By.name("pass")).click();
     driver.findElement(By.name("pass")).clear();
     driver.findElement(By.name("pass")).sendKeys("secret");
+  }
+
+  @Test
+  public void testUntitledTestCase() throws Exception {
     driver.findElement(By.xpath("//input[@value='Login']")).click();
     driver.findElement(By.linkText("groups")).click();
     driver.findElement(By.name("new")).click();

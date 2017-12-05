@@ -14,47 +14,38 @@ public class GroupCreationsTests {
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
 
+
   @BeforeClass(alwaysRun = true)
   public void setUp() throws Exception {
-    driver = new FirefoxDriver();
+    WebDriver driver;
+    System.setProperty("webdriver.gecko.driver", "C:\\Users\\ddubina\\Downloads\\geckodriver.exe");
+    driver =new FirefoxDriver();
     baseUrl = "https://www.katalon.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
-  public void testUntitledTestCase() throws Exception {
-    driver.get("https://rvision-uat.exadel.com/rms-web/login/login.jsf");
-    driver.findElement(By.id("loginForm:password")).clear();
-    driver.findElement(By.id("loginForm:password")).sendKeys("Fabregas4|");
-    driver.findElement(By.id("loginForm:login")).clear();
-    driver.findElement(By.id("loginForm:login")).sendKeys("ddubina");
-    driver.findElement(By.name("loginForm:j_idt36")).click();
-    driver.findElement(By.xpath("//div[@id='mainMenuForm:profileMI']/span[2]")).click();
-    driver.findElement(By.xpath("//td[@id='formEdit:j_idt389:header:inactive']/span")).click();
-    driver.findElement(By.xpath("//td[@id='formEdit:j_idt949:header:inactive']/span")).click();
-    driver.findElement(By.xpath("//td[@id='formEdit:j_idt3725:header:inactive']/span")).click();
-    driver.findElement(By.xpath("//td[@id='formEdit:j_idt3976:header:inactive']/span")).click();
-    driver.findElement(By.xpath("//td[@id='formEdit:j_idt4121:header:inactive']/span")).click();
-    driver.findElement(By.xpath("//td[@id='formEdit:j_idt4296:header:inactive']/span")).click();
-    driver.findElement(By.xpath("//td[@id='formEdit:tabBadges:header:inactive']/span")).click();
-    driver.findElement(By.xpath("//td[@id='formEdit:tabLdap:header:inactive']/span")).click();
-    driver.findElement(By.id("formEdit:j_idt160")).click();
-    driver.findElement(By.xpath("//body")).click();
-    driver.findElement(By.id("mainMenuForm:profileMI")).click();
-    driver.findElement(By.xpath("//td[@id='formEdit:j_idt3976:header:inactive']/span")).click();
-    driver.findElement(By.xpath("//span[@id='mainMenuForm:j_idt20']/img")).click();
-    driver.findElement(By.xpath("//span[@id='mainMenuForm:j_idt20']/img")).click();
-    driver.findElement(By.id("formEdit:j_idt160")).click();
+  public void GroupCreationsTests() throws Exception {
+    driver.get("http://localhost/addressbook/addressbook/group.php");
+    driver.findElement(By.name("user")).click();
+    driver.findElement(By.name("pass")).click();
+    driver.findElement(By.name("pass")).click();
+    driver.findElement(By.xpath("//input[@value='Login']")).click();
+    driver.findElement(By.name("new")).click();
+    driver.findElement(By.name("group_name")).click();
+    driver.findElement(By.name("group_name")).clear();
+    driver.findElement(By.name("group_name")).sendKeys("test2");
+    driver.findElement(By.name("group_header")).click();
+    driver.findElement(By.name("group_header")).clear();
+    driver.findElement(By.name("group_header")).sendKeys("1");
+    driver.findElement(By.name("group_footer")).click();
+    driver.findElement(By.name("group_footer")).clear();
+    driver.findElement(By.name("group_footer")).sendKeys("2");
+    driver.findElement(By.name("submit")).click();
+    driver.findElement(By.linkText("groups")).click();
   }
 
-  @AfterClass(alwaysRun = true)
-  public void tearDown() throws Exception {
-    driver.quit();
-    String verificationErrorString = verificationErrors.toString();
-    if (!"".equals(verificationErrorString)) {
-      fail(verificationErrorString);
-    }
-  }
+
 
   private boolean isElementPresent(By by) {
     try {
